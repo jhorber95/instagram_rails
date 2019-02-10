@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Instuigram</title>
+  <title>Instagram</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -26,7 +26,15 @@
     <div class="user-section">
       <a><i class="fa fa-compass"></i></a>
       <a><i class="fa fa-heart"></i></a>
-      <a><i class="fa fa-user"></i></a>
+      <% if user_signed_in? %>
+        <a href="<%= user_path(current_user)%>">
+          <i class="fa fa-user"></i>
+        </a>
+      <% else %>
+        <a href="<%= new_user_session_path%>">
+          <i class="fa fa-sign-in"></i>
+        </a>
+      <% end %>
     </div>
   </div>
 </nav>
