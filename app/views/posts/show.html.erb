@@ -14,15 +14,14 @@
       <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
     </div>
     <div class="description">
-      <%= render partial: 'layouts/post_description', locals: { post: @post } %>
-
+      <%= render partial: "layouts/post_description", locals: {post: @post} %>
     </div>
+    <% if user_signed_in? %>
     <div class="delete">
       <% if current_user.posts.exists?(@post.id) %>
         <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </div>
+      <% end %>
   </div>
-
-
 </div>
